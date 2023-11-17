@@ -1,0 +1,23 @@
+alerts:
+- rule: DEPLOYMENT_FAILED
+- rule: DOMAIN_FAILED
+features:
+- buildpack-stack=ubuntu-22
+ingress:
+  rules:
+  - component:
+      name: example-personal-site
+    match:
+      path:
+        prefix: /
+name: example-personal-site
+region: fra
+static_sites:
+- dockerfile_path: .do/Dockerfile
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: Kyserbyte/example-personal-site
+  name: example-personal-site
+  source_dir: /
+  output_dir: /app/public
